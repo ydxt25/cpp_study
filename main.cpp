@@ -3,6 +3,8 @@
 #include <unordered_set>
 #include <time.h>
 #include <set>
+#include <array>
+
 
 
 
@@ -76,6 +78,7 @@ void test_move()
     User usr = foo();
 }
 
+
 int _main()
 {
     decltype(0) age = 999;
@@ -105,14 +108,16 @@ int _main()
 void test_unorderd_set()
 {
 
-    std::unordered_set<string> s;
+    std::unordered_set<std::string> s;
 
 
-    for(long i=0;i<10000000;++i)
+    for(long i=0;i<10;++i)
     {
-        s.insert("gfergreger");
+        //s.insert("gfergreger");
+        s.emplace("hello world!!!");
+        //s.bucket()
     }
-
+    std::array<int,10> arr();
 
     time_t t1 = time(NULL);
     std::set<long> s1;
@@ -122,10 +127,71 @@ void test_unorderd_set()
     }
     std::cout<<time(NULL) - t1<<std::endl;
 }
+void foo(bool bstatus)
+{
+    std::cout<<bstatus<<std::endl;
+}
+
+class Student
+{
+public:
+    Student(char *name)
+    {
+
+    }
+};
+#include <vector>
+#include <boost/smart_ptr.hpp>
+void test_smart_ptr()
+{
+    boost::scoped_ptr<int> sp(new int);
+    *sp = 999;
+    boost::scoped_ptr<int> sp1;//sp;
+    sp.swap(sp1);
+    assert(sp);
+    std::unique_ptr<int> up ;
+}
+
+void test_vector()
+{
+    std::vector<std::string> v = {"hello","world"},v1;
+//    v.emplace_back("hello");
+    v1.assign(v.cbegin(),v.cend());
+
+
+//    v.emplace_back("world");
+    for(auto itm : v1)
+    {
+        std::cout<<itm<<std::endl;
+    }
+}
+
+typedef struct Node
+{
+    int data;
+    Node *next;
+}*pnode;
+
+#include <chrono>
+
+void test_chrono()
+{
+    std::chrono::milliseconds ms(1000);
+    std::chrono::system_clock sc;
+    std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+
+    std::cout<<(now + ms).time_since_epoch().count()<<std::endl;
+    std::cout<<std::chrono::system_clock::to_time_t(now + ms)<<std::endl;
+}
 
 int main()
 {
-    test_unorderd_set();
+    //test_unorderd_set();
+    //pnode pn = nullptr;
+    //std::cout<<pn<<std::endl;
+    //test_vector();
+    test_chrono();
+    //test_smart_ptr();
     //foo(4354);
     //foo(User(std::move(User())));
     //foo(User());
