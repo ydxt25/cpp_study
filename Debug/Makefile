@@ -18,7 +18,7 @@ CXXFLAGS      = -pipe -g -std=c++0x -Wall -W -fPIE $(DEFINES)
 INCPATH       = -I/opt/Apps/local/Qt5.2.0/5.2.0/gcc_64/mkspecs/linux-g++ -I../../cpp_study -I.
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/opt/Apps/local/Qt5.2.0/5.2.0/gcc_64
-LIBS          = $(SUBLIBS)  
+LIBS          = $(SUBLIBS) -lboost_regex 
 AR            = ar cqs
 RANLIB        = 
 QMAKE         = /opt/Apps/local/Qt5.2.0/5.2.0/gcc_64/bin/qmake

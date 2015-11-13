@@ -6,3 +6,6 @@ CONFIG -= qt
 SOURCES += main.cpp
 
 CONFIG += c++11
+
+
+LIBS += -lboost_regex
